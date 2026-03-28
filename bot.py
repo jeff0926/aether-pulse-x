@@ -13,7 +13,7 @@ from datetime import datetime
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, MAX_DRAFTS_PER_RUN
+from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, MAX_DRAFTS_PER_DAY
 from scraper import scrape_posts
 from scorer import filter_qualifying_posts
 from drafter import draft_reply, get_x_adjusted_length
@@ -63,7 +63,7 @@ async def scan_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"Found {len(posts)} posts. Scoring...")
 
         # Score and filter
-        qualifying = filter_qualifying_posts(posts, replied_posts, MAX_DRAFTS_PER_RUN)
+        qualifying = filter_qualifying_posts(posts, replied_posts, MAX_DRAFTS_PER_DAY)
 
         if not qualifying:
             await update.message.reply_text(
