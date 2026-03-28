@@ -1,0 +1,4 @@
+# This directory stores:
+# - engagement_log.db (SQLite database)
+# - replied_posts.json (deduplication registry)
+# These files are gitignored.

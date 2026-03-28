@@ -1,0 +1,40 @@
+{
+  "@context": {
+    "@vocab": "https://864zeros.com/aether/",
+    "schema": "https://schema.org/"
+  },
+  "@graph": [
+    {
+      "@id": "aether:PulseX",
+      "@type": "GTMAgent",
+      "name": "AETHER Pulse X",
+      "platform": "x-twitter",
+      "function": "social-engagement-monitor",
+      "autoPost": false,
+      "humanInLoop": true
+    },
+    {
+      "@id": "aether:JeffConn",
+      "@type": "schema:Person",
+      "name": "Jeff Conn",
+      "role": "founder",
+      "organization": "864 Zeros LLC"
+    },
+    {
+      "@id": "aether:AETHER",
+      "@type": "AgentFramework",
+      "name": "AETHER",
+      "description": "Self-verifying, self-educating agent framework",
+      "paper": "https://zenodo.org/records/19212829",
+      "repo": "https://github.com/jeff0926/aether"
+    },
+    {
+      "@id": "aether:JeffersonCapsule",
+      "@type": "ProofPoint",
+      "metric": "AEC score",
+      "before": 0.143,
+      "after": 0.889,
+      "humanIntervention": "zero"
+    }
+  ]
+}

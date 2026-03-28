@@ -1,0 +1,16 @@
+{
+  "pipeline": {
+    "distill": {"enabled": true},
+    "augment": {"enabled": true},
+    "generate": {"enabled": true},
+    "review": {"enabled": true}
+  },
+  "review": {
+    "threshold": 0.80
+  },
+  "domain": "social-engagement",
+  "platform": "x-twitter",
+  "output": "telegram-draft",
+  "auto_post": false,
+  "max_drafts_per_day": 3
+}

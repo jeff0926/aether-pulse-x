@@ -1,0 +1,10 @@
+{
+  "id": "aether-pulse-x-v1.0.0",
+  "name": "AETHER Pulse X",
+  "version": "1.0.0",
+  "type": "gtm-agent",
+  "department": "GTM Office",
+  "created": "2026-03-26",
+  "parent": "aether-pulse",
+  "platform": "x-twitter"
+}
