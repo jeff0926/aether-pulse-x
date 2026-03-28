@@ -32,6 +32,9 @@ def send_draft_to_telegram(post, draft, x_adjusted_length):
     - Jeff manually copies and posts to X
     - No auto-posting. Ever.
     """
+    # Unwrap any tuple values from scraper (defensive fix)
+    post = {k: v[0] if isinstance(v, tuple) else v for k, v in post.items()}
+
     hours_old = post.get('hours_old')
     recency_display = f"{hours_old}h ago" if hours_old is not None else "Unknown"
     tier = post.get('tier', '?')
