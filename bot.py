@@ -18,7 +18,7 @@ from scraper import scrape_posts
 from scorer import filter_qualifying_posts
 from drafter import draft_reply, get_x_adjusted_length
 from notifier import send_draft_to_telegram
-from logger import init_db, load_replied_posts, log_reply
+from logger import init_db, load_replied_posts, log_telegram_sent
 from snapshot import process_url
 
 # Logging
@@ -88,7 +88,7 @@ async def scan_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if draft:
                 x_len = get_x_adjusted_length(draft)
                 send_draft_to_telegram(post, draft, x_len)
-                log_reply(post["id"], post.get("author", ""), draft)
+                log_telegram_sent(post["id"], post.get("author", ""), draft)
                 drafts_sent += 1
 
         # Update stats
