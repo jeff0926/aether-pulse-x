@@ -6,7 +6,13 @@
       "Bash(python debug_scoring.py:*)",
       "Bash(cd:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: aether-pulse-x social engagement monitor\n\nLLM-powered X \\(Twitter\\) discovery system for AETHER framework outreach.\nScrapes posts via Apify, scores with semantic intent classification \\(T1-T6 tiers\\),\ndrafts replies in Jeff Conn''s voice, and sends to Telegram for human review.\n\nKey features:\n- Semantic scoring via Claude API \\(not keyword matching\\)\n- Human-in-the-loop guarantee: Telegram drafts only, no Twitter write API\n- X-adjusted character counting \\(URLs = 23 chars\\)\n- Recency scoring with 48hr threshold\n- Power word verification in drafts\n- Snapshot mode for image/URL analysis\n- AETHER capsule structure with persona, kb, and kg\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(gh auth:*)",
+      "Bash(railway --version:*)",
+      "Bash(git push:*)",
+      "Bash(cat:*)"
     ]
   }
 }
