@@ -178,8 +178,11 @@ def main():
 
     # Run
     print("Bot is running. Listening for commands...")
-    app.run_polling(allowed_updates=Update.ALL_TYPES)
+    app.run_polling(drop_pending_updates=True, allowed_updates=Update.ALL_TYPES)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(f"Bot shutdown: {e}")
