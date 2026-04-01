@@ -87,7 +87,7 @@ async def scan_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             draft, x_len = draft_reply(post)
             if draft:
                 await send_draft_to_telegram(post, draft, x_len)
-                log_telegram_sent(post["id"], post.get("author", ""), draft)
+                log_telegram_sent(post["id"])
                 drafts_sent += 1
 
         # Update stats
