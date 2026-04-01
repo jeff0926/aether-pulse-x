@@ -86,7 +86,7 @@ async def scan_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         for post in qualifying:
             draft, x_len = draft_reply(post)
             if draft:
-                send_draft_to_telegram(post, draft, x_len)
+                await send_draft_to_telegram(post, draft, x_len)
                 log_telegram_sent(post["id"], post.get("author", ""), draft)
                 drafts_sent += 1
 
@@ -138,7 +138,7 @@ async def url_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         result = process_url(url)
         if result:
             from notifier import send_snapshot_draft_to_telegram
-            send_snapshot_draft_to_telegram(result)
+            await send_snapshot_draft_to_telegram(result)
             await update.message.reply_text("Draft sent.")
         else:
             await update.message.reply_text("Could not analyze URL.")

@@ -7,22 +7,11 @@
 # There are ZERO Twitter/X write API calls in this entire codebase.
 # =============================================================================
 
-import asyncio
 from telegram import Bot
 from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 
 
-async def send_telegram_async(message):
-    """Send message to Telegram. This is the ONLY external write operation."""
-    bot = Bot(token=TELEGRAM_BOT_TOKEN)
-    await bot.send_message(
-        chat_id=TELEGRAM_CHAT_ID,
-        text=message,
-        parse_mode="HTML"
-    )
-
-
-def send_draft_to_telegram(post, draft, x_adjusted_length):
+async def send_draft_to_telegram(post, draft, x_adjusted_length):
     """
     Send a formatted draft to Jeff via Telegram.
 
@@ -39,7 +28,7 @@ def send_draft_to_telegram(post, draft, x_adjusted_length):
     recency_display = f"{hours_old}h ago" if hours_old is not None else "Unknown"
     tier = post.get('tier', '?')
     gap = post.get('gap_identified') or "General relevance"
-    reasoning = post.get('reasoning', '')[:100]
+    reasoning = str(post.get('reasoning', ''))[:100]
 
     message = f"""<b>AETHER-PULSE-X</b>
 
@@ -66,10 +55,15 @@ Posted: {recency_display}
 
 <b>After posting: Follow @{post['author']}</b>"""
 
-    asyncio.run(send_telegram_async(message))
+    bot = Bot(token=TELEGRAM_BOT_TOKEN)
+    await bot.send_message(
+        chat_id=TELEGRAM_CHAT_ID,
+        text=message,
+        parse_mode="HTML"
+    )
 
 
-def send_snapshot_draft_to_telegram(result):
+async def send_snapshot_draft_to_telegram(result):
     """
     Send a snapshot-generated draft to Jeff via Telegram.
     Used for --snapshot and --url modes.
@@ -87,4 +81,9 @@ def send_snapshot_draft_to_telegram(result):
 
 <b>Remember to follow the author after posting</b>"""
 
-    asyncio.run(send_telegram_async(message))
+    bot = Bot(token=TELEGRAM_BOT_TOKEN)
+    await bot.send_message(
+        chat_id=TELEGRAM_CHAT_ID,
+        text=message,
+        parse_mode="HTML"
+    )
