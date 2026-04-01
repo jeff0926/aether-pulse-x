@@ -16,7 +16,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, MAX_DRAFTS_PER_DAY
 from scraper import scrape_posts
 from scorer import filter_qualifying_posts
-from drafter import draft_reply, get_x_adjusted_length
+from drafter import draft_reply
 from notifier import send_draft_to_telegram
 from logger import init_db, load_replied_posts, log_telegram_sent
 from snapshot import process_url
@@ -84,9 +84,8 @@ async def scan_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         # Draft and send
         drafts_sent = 0
         for post in qualifying:
-            draft = draft_reply(post)
+            draft, x_len = draft_reply(post)
             if draft:
-                x_len = get_x_adjusted_length(draft)
                 send_draft_to_telegram(post, draft, x_len)
                 log_telegram_sent(post["id"], post.get("author", ""), draft)
                 drafts_sent += 1
